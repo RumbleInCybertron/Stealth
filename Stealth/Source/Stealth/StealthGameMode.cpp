@@ -2,7 +2,7 @@
 
 #include "StealthGameMode.h"
 #include "StealthHUD.h"
-#include "StealthCharacter.h"
+#include "Player/FirstPersonCharacter.h"
 #include "UObject/ConstructorHelpers.h"
 
 AStealthGameMode::AStealthGameMode()
