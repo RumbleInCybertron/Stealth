@@ -35,6 +35,7 @@ class STEALTH_API AGun : public AActor
 	/** Motion controller (left hand) */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class UMotionControllerComponent* L_MotionController;
+
 public:	
 	// Sets default values for this actor's properties
 	AGun();
