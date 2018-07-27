@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "Mannequin.generated.h"
 
+class UInputComponent;
+
 UCLASS()
 class STEALTH_API AMannequin : public ACharacter
 {
@@ -25,7 +27,7 @@ public:
 	TSubclassOf<class AGun> GunBlueprint;
 
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
-	void Fire();
+	void PullTrigger();
 
 protected:
 	virtual void BeginPlay() override;
