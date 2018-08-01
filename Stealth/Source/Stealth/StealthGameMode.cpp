@@ -28,11 +28,21 @@ void AStealthGameMode::PopulateBoundsVolumePool()
 	
 	TArray<AActor*> FoundActors;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AActor::StaticClass(), FoundActors);
-	AddToPool(FoundActors);
+
+	for (AActor* TActor : FoundActors)
+	{
+		AActor* MyActor = Cast<AActor>(TActor);
+
+		if (MyActor != nullptr)
+		{
+			AddToPool(FoundActors);
+		}
+	}
+
 }
 
 
-void AStealthGameMode::AddToPool(TArray<AActor*> VolumeToAdd)
+void AStealthGameMode::AddToPool(AActor* VolumeToAdd)
 {
-//UE_LOG(LogTemp, Warning, TEXT("Found Actor: %s"), VolumeToAdd);
+	NavMeshBoundsVolumePool->Add(VolumeToAdd);
 }
