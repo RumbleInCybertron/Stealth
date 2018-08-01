@@ -8,6 +8,7 @@
 #include "EngineUtils.h"
 #include "Classes/Kismet/GameplayStatics.h"
 #include "Engine/World.h"
+#include "ActorPool.h"
 
 AStealthGameMode::AStealthGameMode()
 	: Super()
@@ -18,15 +19,15 @@ AStealthGameMode::AStealthGameMode()
 
 	// use our custom HUD class
 	HUDClass = AStealthHUD::StaticClass();
+
+	NavMeshBoundsVolumePool = CreateDefaultSubobject<UActorPool>(FName("Nav Mesh Bounds Volume Pool"));
 }
 
 void AStealthGameMode::PopulateBoundsVolumePool()
 {
-	//TSubclassOf<AActor> ClassToFind;
-	//ClassToFind = AActor::StaticClass();
+	
 	TArray<AActor*> FoundActors;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AActor::StaticClass(), FoundActors);
-	UE_LOG(LogTemp, Warning, TEXT("Found Actor: %s"), FoundActors)
 	AddToPool(FoundActors);
 }
 
