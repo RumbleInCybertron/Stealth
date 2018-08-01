@@ -6,6 +6,7 @@
 #include "GameFramework/GameModeBase.h"
 #include "StealthGameMode.generated.h"
 
+
 UCLASS(minimalapi)
 class AStealthGameMode : public AGameModeBase
 {
@@ -13,6 +14,12 @@ class AStealthGameMode : public AGameModeBase
 
 public:
 	AStealthGameMode();
+
+	UFUNCTION(BlueprintCallable, Category = "Bounds Pool")
+	void PopulateBoundsVolumePool();
+
+private:
+	void AddToPool(TArray<AActor*> VolumeToAdd);
 };
 
 
