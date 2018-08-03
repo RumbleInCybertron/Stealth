@@ -4,7 +4,7 @@
 #include "StealthHUD.h"
 #include "Player/FirstPersonCharacter.h"
 #include "UObject/ConstructorHelpers.h"
-//#include "NavMesh/NavMeshBoundsVolume.h"
+#include "NavMesh/NavMeshBoundsVolume.h"
 #include "EngineUtils.h"
 #include "Classes/Kismet/GameplayStatics.h"
 #include "Engine/World.h"
@@ -31,7 +31,7 @@ void AStealthGameMode::PopulateBoundsVolumePool()
 
 	for (AActor* TActor : FoundActors)
 	{
-		AActor* MyActor = Cast<AActor>(TActor);
+		ANavMeshBoundsVolume* MyActor = Cast<ANavMeshBoundsVolume>(TActor);
 
 		if (MyActor != nullptr)
 		{
@@ -42,7 +42,8 @@ void AStealthGameMode::PopulateBoundsVolumePool()
 }
 
 
-void AStealthGameMode::AddToPool(AActor* VolumeToAdd)
+void AStealthGameMode::AddToPool(ANavMeshBoundsVolume *VolumeToAdd)
+//void AStealthGameMode::AddToPool(AActor* VolumeToAdd)
 {
 	NavMeshBoundsVolumePool->Add(VolumeToAdd);
 }
